@@ -1,3 +1,5 @@
+### 安装go和grpc-gateway环境
+[grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway#installation)
 
 ### 生成go gRPC stub
 ```
@@ -17,7 +19,7 @@ protoc -I/usr/local/include -I. \
   echo_service.proto
 ```
 
-### 生成java gRPC
+### 生成java proto解析类
 ```
 protoc -I. \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
