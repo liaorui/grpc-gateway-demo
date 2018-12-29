@@ -4,7 +4,7 @@
 protoc -I/usr/local/include -I. \
   -I$GOPATH/src \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --go_out=plugins=grpc:src/main/go \
+  --go_out=plugins=grpc:src/main/go/cn_learning \
   echo_service.proto
 ```
 
@@ -13,7 +13,7 @@ protoc -I/usr/local/include -I. \
 protoc -I/usr/local/include -I. \
   -I$GOPATH/src \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --grpc-gateway_out=logtostderr=true:src/main/go \
+  --grpc-gateway_out=logtostderr=true:src/main/go/cn_learning \
   echo_service.proto
 ```
 

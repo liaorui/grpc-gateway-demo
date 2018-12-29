@@ -13,7 +13,8 @@ import (
 )
 
 var (
-  echoEndpoint = flag.String("echo_endpoint", "localhost:9090", "endpoint of YourService")
+  echoEndpoint = flag.String("echo_endpoint", "localhost:9090", "echo_endpoint")
+  dateEndpoint = flag.String("date_endpoint", "localhost:9091", "date_endpoint")
 )
 
 func run() error {
@@ -24,6 +25,10 @@ func run() error {
   mux := runtime.NewServeMux()
   opts := []grpc.DialOption{grpc.WithInsecure()}
   err := gw.RegisterEchoServiceHandlerFromEndpoint(ctx, mux, *echoEndpoint, opts)
+  if err != nil {
+    return err
+  }
+  err = gw.RegisterDateServiceHandlerFromEndpoint(ctx, mux, *dateEndpoint, opts)
   if err != nil {
     return err
   }

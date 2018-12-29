@@ -1,0 +1,18 @@
+syntax = "proto3";
+package cn.learning;
+
+import "google/api/annotations.proto";
+
+message DateMessage {
+    string date = 1;
+}
+
+service DateService {
+
+    rpc getDate (DateMessage) returns (DateMessage) {
+        option (google.api.http) = {
+          get: "/v1/example/getdate2"
+        };
+    }
+
+}

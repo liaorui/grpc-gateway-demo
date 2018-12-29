@@ -4,16 +4,22 @@ package cn.learning;
 import "google/api/annotations.proto";
 
 message StringMessage {
-  string value = 1;
+    string value = 1;
 }
 
 service EchoService {
 
-  rpc Echo(StringMessage) returns (StringMessage) {
-    option (google.api.http) = {
-      post: "/v1/example/echo"
-      body: "*"
-    };
-  }
+    rpc Echo (StringMessage) returns (StringMessage) {
+        option (google.api.http) = {
+          post: "/v1/example/echo"
+          body: "*"
+        };
+    }
+
+    rpc getDate (StringMessage) returns (StringMessage) {
+        option (google.api.http) = {
+          get: "/v1/example/getdate"
+        };
+    }
 
 }

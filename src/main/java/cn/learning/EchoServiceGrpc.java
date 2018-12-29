@@ -39,6 +39,18 @@ public final class EchoServiceGrpc {
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               cn.learning.EchoServiceOuterClass.StringMessage.getDefaultInstance()))
           .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<cn.learning.EchoServiceOuterClass.StringMessage,
+      cn.learning.EchoServiceOuterClass.StringMessage> METHOD_GET_DATE =
+      io.grpc.MethodDescriptor.<cn.learning.EchoServiceOuterClass.StringMessage, cn.learning.EchoServiceOuterClass.StringMessage>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+          .setFullMethodName(generateFullMethodName(
+              "cn.learning.EchoService", "getDate"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              cn.learning.EchoServiceOuterClass.StringMessage.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              cn.learning.EchoServiceOuterClass.StringMessage.getDefaultInstance()))
+          .build();
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -74,6 +86,13 @@ public final class EchoServiceGrpc {
       asyncUnimplementedUnaryCall(METHOD_ECHO, responseObserver);
     }
 
+    /**
+     */
+    public void getDate(cn.learning.EchoServiceOuterClass.StringMessage request,
+        io.grpc.stub.StreamObserver<cn.learning.EchoServiceOuterClass.StringMessage> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_GET_DATE, responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -83,6 +102,13 @@ public final class EchoServiceGrpc {
                 cn.learning.EchoServiceOuterClass.StringMessage,
                 cn.learning.EchoServiceOuterClass.StringMessage>(
                   this, METHODID_ECHO)))
+          .addMethod(
+            METHOD_GET_DATE,
+            asyncUnaryCall(
+              new MethodHandlers<
+                cn.learning.EchoServiceOuterClass.StringMessage,
+                cn.learning.EchoServiceOuterClass.StringMessage>(
+                  this, METHODID_GET_DATE)))
           .build();
     }
   }
@@ -112,6 +138,14 @@ public final class EchoServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_ECHO, getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getDate(cn.learning.EchoServiceOuterClass.StringMessage request,
+        io.grpc.stub.StreamObserver<cn.learning.EchoServiceOuterClass.StringMessage> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_GET_DATE, getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -137,6 +171,13 @@ public final class EchoServiceGrpc {
     public cn.learning.EchoServiceOuterClass.StringMessage echo(cn.learning.EchoServiceOuterClass.StringMessage request) {
       return blockingUnaryCall(
           getChannel(), METHOD_ECHO, getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cn.learning.EchoServiceOuterClass.StringMessage getDate(cn.learning.EchoServiceOuterClass.StringMessage request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_GET_DATE, getCallOptions(), request);
     }
   }
 
@@ -165,9 +206,18 @@ public final class EchoServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_ECHO, getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cn.learning.EchoServiceOuterClass.StringMessage> getDate(
+        cn.learning.EchoServiceOuterClass.StringMessage request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_GET_DATE, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ECHO = 0;
+  private static final int METHODID_GET_DATE = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -188,6 +238,10 @@ public final class EchoServiceGrpc {
       switch (methodId) {
         case METHODID_ECHO:
           serviceImpl.echo((cn.learning.EchoServiceOuterClass.StringMessage) request,
+              (io.grpc.stub.StreamObserver<cn.learning.EchoServiceOuterClass.StringMessage>) responseObserver);
+          break;
+        case METHODID_GET_DATE:
+          serviceImpl.getDate((cn.learning.EchoServiceOuterClass.StringMessage) request,
               (io.grpc.stub.StreamObserver<cn.learning.EchoServiceOuterClass.StringMessage>) responseObserver);
           break;
         default:
@@ -224,6 +278,7 @@ public final class EchoServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new EchoServiceDescriptorSupplier())
               .addMethod(METHOD_ECHO)
+              .addMethod(METHOD_GET_DATE)
               .build();
         }
       }
